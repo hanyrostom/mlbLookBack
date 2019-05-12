@@ -1,33 +1,77 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  color: #333333;
+  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+  height: 100%;
 }
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
-  height: 40vmin;
+  max-width: 668px;
+  width: 100%
   /* pointer-events: none; */
 }
 
+h2 {
+  font-size: 1.25em;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: unset;
+}
+
+.schedule-list li {
+  display: flex;
+  border: 1px solid orange;
+  padding: 1em;
+  justify-content: space-between;
+}
+
+.listItem-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.listGame-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.listGame-section h2 {
+  line-height: 16.8px;
+}
+
+.listGame-section>li:first-child {
+  background-color: aqua;
+}
+.section-details {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.catchup {
+  display: flex;
+}
+
+.catchup div {
+  padding: 2px;
+}
+
+
+
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* background-color: #ECECEC; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
