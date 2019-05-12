@@ -12,6 +12,10 @@
   /* pointer-events: none; */
 }
 
+h2 {
+  font-size: 1.25em;
+}
+
 .schedule-list {
   display: flex;
   flex-direction: column;
@@ -29,6 +33,24 @@
 .listItem-section {
   display: flex;
   flex-direction: column;
+}
+
+.listGame-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.listGame-section h2 {
+  line-height: 16.8px;
+}
+
+.listGame-section>li:first-child {
+  background-color: aqua;
+}
+.section-details {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .catchup {
