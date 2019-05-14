@@ -38,6 +38,7 @@ h2 {
 .listGame-section {
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
 }
 
 .listGame-section h2 {
@@ -50,15 +51,34 @@ h2 {
 .section-details {
   display: flex;
   justify-content: space-between;
+  border: 1px solid red;
+}
 
+.game-info {
+  border: 1px solid blueviolet;
+}
+
+.game-info img{
+  height: 0.875em;
+  width: 0.875em;
+}
+.decisions {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blueviolet;
 }
 
 .catchup {
   display: flex;
+  align-items: center;
+  border: 1px solid red;
 }
 
-.catchup div {
+.catchup img {
   padding: 2px;
+  height: 1em;
+  width: 1em;
+  color: black;
 }
 
 

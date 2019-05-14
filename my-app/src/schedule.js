@@ -1,6 +1,14 @@
 import React from "react";
 // import mlbLogo from "./assets/mlbLogo.svg";
+import wrap from './assets/wrap.png';
+import highlights from './assets/highlights.png';
 import helpers from './helpers';
+import TBS from './assets/TBS.svg';
+import ESPN from './assets/ESPN.svg';
+import FS1 from './assets/FS1.svg';
+import FS1INT from './assets/FS1-INT.svg';
+import MLBN from './assets/MLBN.svg';
+import FOX from './assets/FOX.svg';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -49,31 +57,34 @@ class Schedule extends React.Component {
                     </h2> :null}
                     <div className="section-details">
                       <div>
-                        <h4>description</h4>
+                        <h4>{game.description}</h4>
                         <div>
                           <a href="http://google.com">
-                            <span>img tag!</span>
+                            <span className={`teamLogo ${game.awayTeamCode}`}>##</span>
                             <span>{game.awayTeam}</span>
+														<span className="team-score">{game.awayTeamScore}</span>
+
                             <span>@</span>
                           </a>
                           <a href="http://google.com">
-                            <span>img tag!</span>
-                            <span>team</span>
+                            <span className={`teamLogo ${game.homeTeamCode}`}>##</span>
+                            <span>{game.homeTeam}</span>
+														<span className="team-score">{game.homeTeamScore}</span>
                           </a>
                         </div>
                       </div>
-                      <div>
-                        <>final?</>
-                        <>coverage</>
+                      <div className='game-info'>
+                        <>{game.status}</>
+                        <img alt={game.broadcast} src={game.broadcast}/>
                       </div>
-                      <div>
-                        <span>W</span>
-                        <span>L</span>
-                        <span>Sv?</span>
+                      <div className='decisions'>
+                        <span>W:{game.winner}</span>
+                        <span>L:{game.loser}</span>
+                        {game.save? <span>S:{game.save}</span> : null}
                       </div>
                       <div className="catchup">
-                        <div>wrap</div>
-                        <div>HL</div>
+												<img alt='wrap' src={wrap}/>
+                        <img alt='wrap' src={highlights}/>
                       </div>
                     </div>
                   </li>

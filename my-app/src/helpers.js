@@ -1,3 +1,10 @@
+import TBS from './assets/TBS.svg';
+import ESPN from './assets/ESPN.svg';
+import FS1 from './assets/FS1.svg';
+import FS1INT from './assets/FS1-INT.svg';
+import MLBN from './assets/MLBN.svg';
+import FOX from './assets/FOX.svg';
+
 
 let shouldBe35 = 0
 
@@ -18,13 +25,22 @@ const helpers = {
 
 				gameTimes.push(game.gameDate);
         stored[game.gameDate] = {
-          date: game.gameDate,
-          homeTeam: game.teams.home.team.abbreviation,
-          awayTeam: game.teams.away.team.abbreviation,
-          winner: game.decisions.winner.fullName,
-					loser: game.decisions.loser.fullName,
-					save: game.decisions.save? game.decisions.save.fullName : null,
-          description: game.description,
+					date: game.gameDate,
+					homeTeam: game.teams.home.team.teamName,
+					awayTeam: game.teams.away.team.teamName,
+          homeTeamCode: game.teams.home.team.abbreviation,
+					awayTeamCode: game.teams.away.team.abbreviation,
+					homeTeamScore: game.teams.home.score,
+					awayTeamScore: game.teams.away.score,
+					isHomeWinner: null,
+					isAwayWinner:null,
+					winningTeam: null,
+					losingTeam: null,
+					status: game.linescore.currentInning > 9 ? 'F/' + game.linescore.currentInning: 'FINAL',
+          winner: helpers.formatName(game.decisions.winner.fullName),
+					loser: helpers.formatName(game.decisions.loser.fullName),
+					save: game.decisions.save? helpers.formatName(game.decisions.save.fullName) : null,
+          description: helpers.trimGame(game.description),
           doubleHeader: "N",
           gameDate: game.gameDate,
           gameNumber: null,
@@ -36,7 +52,7 @@ const helpers = {
           ifNecessaryDescription: "Normal Game",
           isFeaturedGame: false,
           isTie: false,
-          broadcast: game.broadcasts[0].type === 'tv'? game.broadcasts[0].name : null,
+          broadcast: helpers.findBroadcast(game.broadcasts),
 					seriesDescription: "AL Division Series",
 					seriesId: singleSeries.series.id,
 					seriestotalGames: singleSeries.totalGames,
@@ -72,12 +88,12 @@ const helpers = {
 				i    = 0;
 
 				while (!type) {
-					console.log('broadcast.type?', coverage[i].type)
 					if (coverage[i].type === 'TV'){
+						console.log('broadcast.type?', coverage[i].name)
 						console.log('^ this must be tv, thats why I am here')
 						shouldBe35++
 						type = 'TV'
-						return shouldBe35
+						return coverage[i].name
 					} else {
 						i++
 					}
@@ -85,7 +101,15 @@ const helpers = {
 				}
 
 				return
-		}
+		},
+
+		trimGame : (input) => {
+			let inputArray = input.split(' ').slice(0,3)
+			inputArray[1] = inputArray[1] === 'Game'? 'GM': inputArray[1]
+			
+			return inputArray.join(' ')
+		},
+		formatName : (name) => name[0] + ' ' + name.split(' ')[1]
 	}
 
 
