@@ -55,38 +55,38 @@ class Schedule extends React.Component {
                       {days[new Date(game.gameDate).getDay()]},{" "}
                       {new Date(game.gameDate).toDateString().slice(4, 10)}
                     </h2> :null}
+                        <h4>{game.description}</h4>
                     <div className="section-details">
                       <div>
-                        <h4>{game.description}</h4>
-                        <div>
-                          <a href="http://google.com">
-                            <span className={`teamLogo ${game.awayTeamCode}`}>##</span>
-                            <span>{game.awayTeam}</span>
-														<span className="team-score">{game.awayTeamScore}</span>
-
-                            <span>@</span>
-                          </a>
-                          <a href="http://google.com">
-                            <span className={`teamLogo ${game.homeTeamCode}`}>##</span>
-                            <span>{game.homeTeam}</span>
-														<span className="team-score">{game.homeTeamScore}</span>
-                          </a>
+                        <div className='scores'>
+													<div className='scores-awayteam'>
+													<span alt={`${game.awayTeam} logo`}className={`team-logo ${game.awayTeam}`}/>
+															<p className='team-name'>{game.awayTeam}</p>
+															<p className="team-score">{game.awayTeamScore}</p>
+														</div>
+															<span style={{paddingLeft : '0.5em', paddingRight: '0.5em'}}>@</span>
+                          <div className='scores-hometeam'>
+                            <span alt={`${game.homeTeam} logo`}className={`team-logo ${game.homeTeam}`}/>
+                            <p className='team-name'>{game.homeTeam}</p>
+														<p className="team-score">{game.homeTeamScore}</p>
+                          </div>
                         </div>
                       </div>
                       <div className='game-info'>
-                        <>{game.status}</>
-                        <img alt={game.broadcast} src={game.broadcast}/>
+                        <p className='info-status'>{game.status}</p>
+                        <div alt={game.broadcast} className={`info-status ${game.broadcast}`}/>
                       </div>
                       <div className='decisions'>
-                        <span>W:{game.winner}</span>
-                        <span>L:{game.loser}</span>
-                        {game.save? <span>S:{game.save}</span> : null}
+                        <p>W:<span className='name'>{game.winner}</span></p>
+                        <p>L:<span className='name'>{game.loser}</span></p>
+                        {game.save? <p>S:<span className='name'>{game.save}</span></p>: null}
                       </div>
                       <div className="catchup">
 												<img alt='wrap' src={wrap}/>
                         <img alt='wrap' src={highlights}/>
                       </div>
                     </div>
+										
                   </li>
                 ))}
               </ul>

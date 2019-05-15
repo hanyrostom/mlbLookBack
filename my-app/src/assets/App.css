@@ -1,15 +1,19 @@
 .App {
   /* text-align: center; */
   color: #333333;
-  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   height: 100%;
 }
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
   max-width: 668px;
-  width: 100%
+  width: 100%;
   /* pointer-events: none; */
+}
+
+p {
+  font-size: 1em;
 }
 
 h2 {
@@ -19,6 +23,7 @@ h2 {
 .schedule-list {
   display: flex;
   flex-direction: column;
+  width:100%;
   margin: 0 auto;
   padding: unset;
 }
@@ -28,6 +33,7 @@ h2 {
   border: 1px solid orange;
   padding: 1em;
   justify-content: space-between;
+  text-align: center;
 }
 
 .listItem-section {
@@ -45,27 +51,126 @@ h2 {
   line-height: 16.8px;
 }
 
-.listGame-section>li:first-child {
+.listGame-section > li:first-child {
   background-color: aqua;
 }
 .section-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  border: 1px solid red;
+  align-items: center;
+  border-top: 1px solid rgb(236,236,236);
+  border-bottom: 1px solid rgb(236,236,236);
+  height: 10.5em;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 16em;
+  min-width: 10em;
+  border: 1px solid maroon;
+  font-weight: 600;
+}
+
+.scores-awayteam, .scores-hometeam{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid orange;
+}
+
+span.team-logo {
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+  border: 1px solid blue;
+}
+
+span.team-logo.Dodgers {
+  background: url("./dodgers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Yankees {
+  background: url("./yankees.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Dodgers {
+  background: url("./dodgers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Cubss {
+  background: url("./cubs.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Astros {
+  background: url("./astros.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Brewers {
+  background: url("./brewers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Indians {
+  background: url("./indians.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Braves {
+  background: url("./braves.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Rockies {
+  background: url("./rockies.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Athletics {
+  background: url("./athletics.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Red.Sox {
+  background: url("./red-sox.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Cubs {
+  background: url("./cubs.svg") no-repeat center;
+  /* background-size: 1.5em; */
 }
 
 .game-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   border: 1px solid blueviolet;
+  width: 6em;
 }
 
-.game-info img{
-  height: 0.875em;
-  width: 0.875em;
+p.team-name {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
+
 .decisions {
   display: flex;
   flex-direction: column;
   border: 1px solid blueviolet;
+  min-width: 7em;
+}
+
+span.name {
+  color: #147cd1;
 }
 
 .catchup {
@@ -81,8 +186,44 @@ h2 {
   color: black;
 }
 
+.info-status {
+}
+p.info-status {
+  font-size: 0.75em;
+}
 
+div.info-status {
+  height: 2em;
+  width: 25%;
+}
 
+.info-status.ESPN {
+  background: url("./ESPN.svg") no-repeat center;
+  background-size: 1.5em;
+
+}
+
+.info-status.FOX {
+  background: url("./FOX.svg") no-repeat center;
+}
+
+.info-status.FS1 {
+  background: url("./FS1.svg") no-repeat center;
+}
+
+.info-status.FS1-INT {
+  background: url("./FS1-INT.svg") no-repeat center;
+}
+
+.info-status.MLBN {
+  background: url("./MLBN.svg") no-repeat center;
+  background-size: 1.5em;
+
+}
+
+.info-status.TBS {
+  background: url("./TBS.svg") no-repeat center;
+}
 
 .App-header {
   /* background-color: #ECECEC; */
@@ -94,4 +235,33 @@ h2 {
 }
 
 
+/* breakpoints */
 
+
+@media only screen and (min-width: 330px) {
+  .scores {
+    flex-direction: row;
+  }
+}
+
+
+
+/* tablet */
+
+
+@media only screen and (min-width: 600px) {
+  
+}
+
+
+/* desktop and tablet lanscape */
+
+@media only screen and (min-width: 768px) {
+  .section-details {
+    flex-direction: row;
+    height: 4.5em;
+  }
+  .schedule-list li {
+    text-align: unset;
+  }
+}
