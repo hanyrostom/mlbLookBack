@@ -2,7 +2,8 @@
 const helpers = {
   listGames: allSeries => {
     let stored = {},
-      gameTimes = [],
+			filtered = [], //make dynamic rounds/times
+			rounds = [],
       store = {},
       updated = [];
 		
@@ -10,10 +11,8 @@ const helpers = {
 
 
       singleSeries.games.forEach(game => {
-				// console.log('shouldBe35: ', helpers.findBroadcast(game.broadcasts))
-				// console.log('type: ', game.broadcasts[2].type)
 
-				gameTimes.push(game.gameDate);
+				filtered.push(game.gameDate);
         stored[game.gameDate] = {
 					date: game.gameDate,
 					homeTeam: game.teams.home.team.teamName,
@@ -23,28 +22,17 @@ const helpers = {
 					homeTeamScore: game.teams.home.score,
 					awayTeamScore: game.teams.away.score,
 					series: singleSeries.series.id,
-					isHomeWinner: null,
-					isAwayWinner:null,
-					winningTeam: null,
-					losingTeam: null,
 					result: game.seriesStatus.result,
 					status: game.linescore.currentInning > 9 ? 'F/' + game.linescore.currentInning: 'FINAL',
           winner: helpers.formatName(game.decisions.winner.fullName),
 					loser: helpers.formatName(game.decisions.loser.fullName),
 					save: game.decisions.save? helpers.formatName(game.decisions.save.fullName) : null,
-          description: helpers.trimGame(game.description),
-          doubleHeader: "N",
+          description: helpers.trimGame(game.seriesStatus.shortDescription),
           gameDate: game.gameDate,
-          gameNumber: game.gameNumber,
+          gameNumber: game.seriesGameNumber,
           gamePk: game.gamePk,
-					gameType: "D",
-					isTieBreaker: null,
-          gamedayType: "P",
           gamesInSeries: game.gamesInSeries,
-          ifNecessary: "N",
-          ifNecessaryDescription: "Normal Game",
-          isFeaturedGame: false,
-          isTie: false,
+					shortDescription: game.seriesStatus.shortDescription,
 					broadcast: helpers.findBroadcast(game.broadcasts),
 					seriesStatus : singleSeries.games[singleSeries.totalGames -1].seriesStatus.result,
 					seriesDescription: game.seriesDescription,
@@ -57,10 +45,10 @@ const helpers = {
     });
 
     //arrange the times of the games
-    gameTimes = gameTimes.sort((a, b) => new Date(a) - new Date(b));
+    filtered = filtered.sort((a, b) => new Date(a) - new Date(b));
 
     let count = 0;
-    gameTimes.forEach(time => {
+    filtered.forEach(time => {
 
       let day = time.slice(0, 10);
       //if its a new day
@@ -97,18 +85,8 @@ const helpers = {
 		trimGame : (input) => {
 			console.log('input', input)
 			let inputArray = input.split(' ')
-			// inputArray = inputArray[-1] === 'Game'? 'World Series Gm ': inputArray[0] + '!'
+			inputArray[1] = inputArray[1] === 'Game'? 'Gm' : inputArray[1]
 
-			if (inputArray[1] === 'Game') {
-				inputArray[1] = 'Gm'
-			} else if (inputArray[2] === 'Game') {
-				inputArray[2] = 'Gm'
-			}  else if (inputArray[3] === 'Game') {
-				inputArray.pop()
-			} else if (	inputArray[2] === 'tiebreaker') {
-				console.log(inputArray)
-				inputArray = [inputArray[0],'Tiebreaker']
-			}
 			
 			return inputArray.join(' ')
 		},
