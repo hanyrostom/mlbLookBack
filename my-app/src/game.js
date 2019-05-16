@@ -5,6 +5,7 @@ import highlights from "./assets/highlights.png";
 import helpers from "./helpers";
 
 const Game = (props) => {
+  console.log('game: ', props)
 
     return (
       <div className="section-details">

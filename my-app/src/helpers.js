@@ -6,7 +6,7 @@ const helpers = {
       store = {},
       updated = [];
 		
-    allSeries.forEach(singleSeries => {
+    allSeries.forEach((singleSeries,i) => {
 
 
       singleSeries.games.forEach(game => {
@@ -40,13 +40,14 @@ const helpers = {
 					gameType: "D",
 					isTieBreaker: null,
           gamedayType: "P",
-          gamesInSeries: 5,
+          gamesInSeries: game.gamesInSeries,
           ifNecessary: "N",
           ifNecessaryDescription: "Normal Game",
           isFeaturedGame: false,
           isTie: false,
-          broadcast: helpers.findBroadcast(game.broadcasts),
-					seriesDescription: "AL Division Series",
+					broadcast: helpers.findBroadcast(game.broadcasts),
+					seriesStatus : singleSeries.games[singleSeries.totalGames -1].seriesStatus.result,
+					seriesDescription: game.seriesDescription,
 					seriesId: singleSeries.series.id,
 					seriestotalGames: singleSeries.totalGames,
 
@@ -111,7 +112,16 @@ const helpers = {
 			
 			return inputArray.join(' ')
 		},
-		formatName : (name) => name[0] + ' ' + name.split(' ')[1]
+		formatName : (name) => name[0] + ' ' + name.split(' ')[1],
+	  days : [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
 	}
 
 
