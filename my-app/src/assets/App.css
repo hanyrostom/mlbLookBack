@@ -12,12 +12,31 @@
   /* pointer-events: none; */
 }
 
-p {
-  font-size: 1em;
+
+h1 {
+  font-size: 1.5em;
 }
 
 h2 {
   font-size: 1.25em;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+header {
+  text-align: center;
+}
+
+.title {
+ padding: 1.5em;
+}
+
+.schedule-container {
+  padding: 1em;
+  margin-bottom: 3em;
 }
 
 .schedule-list {
@@ -30,8 +49,7 @@ h2 {
 
 .schedule-list li {
   display: flex;
-  border: 1px solid orange;
-  padding: 1em;
+  padding: 0em 1em;
   justify-content: space-between;
   text-align: center;
 }
@@ -44,16 +62,26 @@ h2 {
 .listGame-section {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 }
 
 .listGame-section h2 {
-  line-height: 16.8px;
+  line-height: 1.5em;
 }
 
 .listGame-section > li:first-child {
   background-color: aqua;
 }
+
+.section-date, .section-description {
+  padding: 0.5em 0em;
+  /* line-height: 1em; */
+}
+
+.section-description {
+  display: flex;
+  flex-direction: column;
+}
+
 .section-details {
   display: flex;
   flex-direction: column;
@@ -61,7 +89,15 @@ h2 {
   align-items: center;
   border-top: 1px solid rgb(236,236,236);
   border-bottom: 1px solid rgb(236,236,236);
-  height: 10.5em;
+  height: 14.5em;
+  padding-bottom: 0.5em;
+}
+
+.details-game {
+  width: 19em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .scores {
@@ -71,7 +107,6 @@ h2 {
   align-items: center;
   width: 16em;
   min-width: 10em;
-  border: 1px solid maroon;
   font-weight: 600;
 }
 
@@ -79,15 +114,15 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid orange;
 }
 
 span.team-logo {
   display: block;
   height: 1.5em;
   width: 1.5em;
-  border: 1px solid blue;
 }
+
+/*team logos */
 
 span.team-logo.Dodgers {
   background: url("./dodgers.svg") no-repeat center;
@@ -153,7 +188,6 @@ span.team-logo.Cubs {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid blueviolet;
   width: 6em;
 }
 
@@ -165,9 +199,9 @@ p.team-name {
 .decisions {
   display: flex;
   flex-direction: column;
-  border: 1px solid blueviolet;
-  min-width: 7em;
+  align-items: flex-start;
 }
+
 
 span.name {
   color: #147cd1;
@@ -176,7 +210,8 @@ span.name {
 .catchup {
   display: flex;
   align-items: center;
-  border: 1px solid red;
+  width: 3em;
+  justify-content: space-between;
 }
 
 .catchup img {
@@ -242,6 +277,9 @@ div.info-status {
   .scores {
     flex-direction: row;
   }
+  .decisions {
+    align-self: flex-start;
+  }
 }
 
 
@@ -250,13 +288,18 @@ div.info-status {
 
 
 @media only screen and (min-width: 600px) {
-  
+  .section-description {
+    flex-direction: row;
+  }
 }
 
 
 /* desktop and tablet lanscape */
 
 @media only screen and (min-width: 768px) {
+  .details-game {
+    align-items: unset;
+  }
   .section-details {
     flex-direction: row;
     height: 4.5em;
@@ -264,4 +307,10 @@ div.info-status {
   .schedule-list li {
     text-align: unset;
   }
+
+  .decisions {
+    min-width: 7em;
+    align-self: unset;
+  }
+  
 }

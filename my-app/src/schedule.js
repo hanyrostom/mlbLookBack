@@ -3,12 +3,7 @@ import React from "react";
 import wrap from './assets/wrap.png';
 import highlights from './assets/highlights.png';
 import helpers from './helpers';
-import TBS from './assets/TBS.svg';
-import ESPN from './assets/ESPN.svg';
-import FS1 from './assets/FS1.svg';
-import FS1INT from './assets/FS1-INT.svg';
-import MLBN from './assets/MLBN.svg';
-import FOX from './assets/FOX.svg';
+
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -41,7 +36,7 @@ class Schedule extends React.Component {
     return (
       <div className="scheduele-container">
         <header className="scheduele-header">
-          <h1>Schedule</h1>
+          <h1 className='title'>Schedule</h1>
         </header>
         <hr />
         <ul className="schedule-list">
@@ -51,13 +46,13 @@ class Schedule extends React.Component {
               <ul className="listed-games">
                 {game[0][j].map((game, i) => (
                   <li className="listGame-section" key={i}>
-                    {i === 0?<h2>
+                    {i === 0?<h2 className='section-date'>
                       {days[new Date(game.gameDate).getDay()]},{" "}
                       {new Date(game.gameDate).toDateString().slice(4, 10)}
                     </h2> :null}
-                        <h4>{game.description}</h4>
                     <div className="section-details">
-                      <div>
+                      <div className="details-game">
+                        <h4 className='section-description'><span>{game.description} - </span><span>{game.result}</span></h4>
                         <div className='scores'>
 													<div className='scores-awayteam'>
 													<span alt={`${game.awayTeam} logo`}className={`team-logo ${game.awayTeam}`}/>
@@ -77,9 +72,9 @@ class Schedule extends React.Component {
                         <div alt={game.broadcast} className={`info-status ${game.broadcast}`}/>
                       </div>
                       <div className='decisions'>
-                        <p>W:<span className='name'>{game.winner}</span></p>
-                        <p>L:<span className='name'>{game.loser}</span></p>
-                        {game.save? <p>S:<span className='name'>{game.save}</span></p>: null}
+                        <p>W: <span className='name'>{game.winner}</span></p>
+                        <p>L: <span className='name'>{game.loser}</span></p>
+                        {game.save? <p>S: <span className='name'>{game.save}</span></p>: null}
                       </div>
                       <div className="catchup">
 												<img alt='wrap' src={wrap}/>
