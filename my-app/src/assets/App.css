@@ -27,8 +27,6 @@ p {
   line-height: 1.25em;
 }
 
-
-
 header {
   text-align: center;
 }
@@ -40,6 +38,26 @@ header {
 .schedule-container {
   padding: 1em;
   margin-bottom: 3em;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.filter {
+
+  padding: 1em;
+  text-align: center;
+  margin: auto 0;
+  width: 5em;
+  border: 1px solid lightgrey;
+}
+
+.filter.active {
+  background-color : lightgrey;
+  border: 2px solid grey;
 }
 
 .schedule-list {

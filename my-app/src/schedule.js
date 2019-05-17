@@ -10,40 +10,59 @@ class Schedule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      games: []
+			gamesByDate: [],
+			gamesByRound:[],
+			filter: {
+				ByDate: 'active',
+				ByRound: ''
+			},
+			selected: 'gamesByDate'
     };
   }
 
   componentDidMount() {
-		let output = helpers.listGames(this.props.games)
-    this.setState({games : output})
-  }
+		this.setState({gamesByDate : helpers.listGames(this.props.games, 'ByDate'),
+									gamesByRound : helpers.listGames(this.props.games, 'ByRound')})
+		this.setState({})
+	}
+	
+	onFilterClick = (event) => {
+		//change css
+		let by             = event.target.innerText.split(' ').join(''),
+		    filterSelected = {[by] : 'active'};
+		this.setState({filter : filterSelected, selected: `games${by}`}, ()=> console.log(this.state))
+		//render required filtered games
+	}
 
 
 
   render() {
-		let { games } = this.state;
+		let { gamesByDate, filter, selected, gamesByRound } = this.state;
 		
+			console.log('selected:', gamesByRound)
+
 
     return (
       <div className="scheduele-container">
         <header className="scheduele-header">
           <h1 className='title'>Schedule</h1>
         </header>
+				<div className='filters'>
+					<h3 className={`filter ${filter.ByDate}`} onClick={this.onFilterClick}>By Date</h3>
+					<h3 className={`filter ${filter.ByRound}`} onClick={this.onFilterClick}>By Round</h3>
+				</div>
         <hr />
         <ul className="schedule-list">
-          {games.map((game, j) => (
-            <li className="listItem-section" key={j}>
+				{console.log(this.state[selected])}
+          {this.state[selected].map((game, j) => (
+						<li className="listItem-section" key={j}>
+						
               <ul className="listed-games">
                 {game[0][j].map((game, i) => (
-                  <li className="listGame-section" key={i}>
-                    { i === 0? <h2 className='section-date'>
-                      {helpers.days[new Date(game.gameDate).getDay()]},{" "}
-                      {new Date(game.gameDate).toDateString().slice(4, 10)}
-                    </h2> : null }
-                    <Game game={game}/>
+                  
+                    <Game game={game} key={i} i={i} filter= {selected}/>
 										
-                  </li>
+                  
                 ))}
               </ul>
             </li>
