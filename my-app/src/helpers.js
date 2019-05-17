@@ -1,29 +1,18 @@
-import TBS from './assets/TBS.svg';
-import ESPN from './assets/ESPN.svg';
-import FS1 from './assets/FS1.svg';
-import FS1INT from './assets/FS1-INT.svg';
-import MLBN from './assets/MLBN.svg';
-import FOX from './assets/FOX.svg';
-
-
-let shouldBe35 = 0
-
 
 const helpers = {
   listGames: allSeries => {
     let stored = {},
-      gameTimes = [],
+			filtered = [], //make dynamic rounds/times
+			rounds = [],
       store = {},
       updated = [];
 		
-    allSeries.forEach(singleSeries => {
+    allSeries.forEach((singleSeries,i) => {
 
 
       singleSeries.games.forEach(game => {
-				console.log('shouldBe35: ', helpers.findBroadcast(game.broadcasts))
-				// console.log('type: ', game.broadcasts[2].type)
 
-				gameTimes.push(game.gameDate);
+				filtered.push(game.gameDate);
         stored[game.gameDate] = {
 					date: game.gameDate,
 					homeTeam: game.teams.home.team.teamName,
@@ -32,28 +21,21 @@ const helpers = {
 					awayTeamCode: game.teams.away.team.abbreviation,
 					homeTeamScore: game.teams.home.score,
 					awayTeamScore: game.teams.away.score,
-					isHomeWinner: null,
-					isAwayWinner:null,
-					winningTeam: null,
-					losingTeam: null,
+					series: singleSeries.series.id,
+					result: game.seriesStatus.result,
 					status: game.linescore.currentInning > 9 ? 'F/' + game.linescore.currentInning: 'FINAL',
           winner: helpers.formatName(game.decisions.winner.fullName),
 					loser: helpers.formatName(game.decisions.loser.fullName),
 					save: game.decisions.save? helpers.formatName(game.decisions.save.fullName) : null,
-          description: helpers.trimGame(game.description),
-          doubleHeader: "N",
+          description: helpers.trimGame(game.seriesStatus.shortDescription),
           gameDate: game.gameDate,
-          gameNumber: null,
+          gameNumber: game.seriesGameNumber,
           gamePk: game.gamePk,
-          gameType: "D",
-          gamedayType: "P",
-          gamesInSeries: 5,
-          ifNecessary: "N",
-          ifNecessaryDescription: "Normal Game",
-          isFeaturedGame: false,
-          isTie: false,
-          broadcast: helpers.findBroadcast(game.broadcasts),
-					seriesDescription: "AL Division Series",
+          gamesInSeries: game.gamesInSeries,
+					shortDescription: game.seriesStatus.shortDescription,
+					broadcast: helpers.findBroadcast(game.broadcasts),
+					seriesStatus : singleSeries.games[singleSeries.totalGames -1].seriesStatus.result,
+					seriesDescription: game.seriesDescription,
 					seriesId: singleSeries.series.id,
 					seriestotalGames: singleSeries.totalGames,
 
@@ -63,10 +45,10 @@ const helpers = {
     });
 
     //arrange the times of the games
-    gameTimes = gameTimes.sort((a, b) => new Date(a) - new Date(b));
+    filtered = filtered.sort((a, b) => new Date(a) - new Date(b));
 
     let count = 0;
-    gameTimes.forEach(time => {
+    filtered.forEach(time => {
 
       let day = time.slice(0, 10);
       //if its a new day
@@ -83,33 +65,41 @@ const helpers = {
 	},
 	
 	findBroadcast : coverage => {
-		console.log('coverage', coverage)
+		// console.log('coverage', coverage)
 		let type = null,
 				i    = 0;
 
 				while (!type) {
 					if (coverage[i].type === 'TV'){
-						console.log('broadcast.type?', coverage[i].name)
-						console.log('^ this must be tv, thats why I am here')
-						shouldBe35++
+						// console.log('broadcast.type?', coverage[i].name)
+						// console.log('^ this must be tv, thats why I am here')
 						type = 'TV'
 						return coverage[i].name
 					} else {
 						i++
 					}
-					
 				}
-
 				return
 		},
 
 		trimGame : (input) => {
-			let inputArray = input.split(' ').slice(0,3)
-			inputArray[1] = inputArray[1] === 'Game'? 'GM': inputArray[1]
+			console.log('input', input)
+			let inputArray = input.split(' ')
+			inputArray[1] = inputArray[1] === 'Game'? 'Gm' : inputArray[1]
+
 			
 			return inputArray.join(' ')
 		},
-		formatName : (name) => name[0] + ' ' + name.split(' ')[1]
+		formatName : (name) => name[0] + ' ' + name.split(' ')[1],
+	  days : [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
 	}
 
 

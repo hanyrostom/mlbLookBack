@@ -6,19 +6,13 @@ import helpers from './helpers';
 import Game from './game'
 
 
-class Schedule extends React.Component {
+class ByRound extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       games: []
     };
   }
-
-  componentDidMount() {
-		let output = helpers.listGames(this.props.games)
-    this.setState({games : output})
-  }
-
 
 
   render() {
@@ -36,11 +30,8 @@ class Schedule extends React.Component {
             <li className="listItem-section" key={j}>
               <ul className="listed-games">
                 {game[0][j].map((game, i) => (
-                  <li className="listGame-section" key={i}>
-                    { i === 0? <h2 className='section-date'>
-                      {helpers.days[new Date(game.gameDate).getDay()]},{" "}
-                      {new Date(game.gameDate).toDateString().slice(4, 10)}
-                    </h2> : null }
+                  <li className="listRound-section" key={i}>
+                    
                     <Game game={game}/>
 										
                   </li>
@@ -54,4 +45,4 @@ class Schedule extends React.Component {
   }
 }
 
-export default Schedule;
+export default ByRound;
