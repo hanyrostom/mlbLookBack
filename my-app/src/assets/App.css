@@ -1,33 +1,325 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  color: #333333;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  height: 100%;
 }
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
-  height: 40vmin;
+  max-width: 285px;
+  width: 100%;
+  padding: 2em;
   /* pointer-events: none; */
 }
 
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+header {
+  text-align: center;
+}
+
+.title {
+ padding: 1.5em;
+}
+
+.schedule-container {
+  padding: 1em;
+  margin-bottom: 3em;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  margin: 0 auto;
+  padding: unset;
+}
+
+.schedule-list li {
+  display: flex;
+  padding: 0em 1em;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.listItem-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.listGame-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.listGame-section h2 {
+  line-height: 1.5em;
+}
+
+.listGame-section > li:first-child {
+  background-color: aqua;
+}
+
+.section-date, .section-description {
+  padding: 0.5em 0em;
+  /* line-height: 1em; */
+}
+
+.section-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(236,236,236);
+  border-bottom: 1px solid rgb(236,236,236);
+  min-height: 24.5em;
+  padding-bottom: 0.5em;
+}
+
+.details-game {
+  width: 19em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 16em;
+  min-width: 10em;
+  font-weight: 600;
+}
+
+.scores-awayteam, .scores-hometeam{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+span.team-logo {
+  display: block;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+/*team logos */
+
+span.team-logo.Dodgers {
+  background: url("./dodgers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Yankees {
+  background: url("./yankees.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Dodgers {
+  background: url("./dodgers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Cubss {
+  background: url("./cubs.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Astros {
+  background: url("./astros.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Brewers {
+  background: url("./brewers.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Indians {
+  background: url("./indians.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Braves {
+  background: url("./braves.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Rockies {
+  background: url("./rockies.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Athletics {
+  background: url("./athletics.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Red.Sox {
+  background: url("./red-sox.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+span.team-logo.Cubs {
+  background: url("./cubs.svg") no-repeat center;
+  /* background-size: 1.5em; */
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 6em;
+}
+
+p.team-name {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.decisions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+span.name {
+  color: #147cd1;
+}
+
+.catchup {
+  display: flex;
+  align-items: center;
+  width: 3em;
+  justify-content: space-between;
+}
+
+.catchup img {
+  padding: 2px;
+  height: 1em;
+  width: 1em;
+  color: black;
+}
+
+.info-status {
+}
+p.info-status {
+  font-size: 0.75em;
+}
+
+div.info-status {
+  height: 2em;
+  width: 25%;
+}
+
+.info-status.ESPN {
+  background: url("./ESPN.svg") no-repeat center;
+  background-size: 1.5em;
+
+}
+
+.info-status.FOX {
+  background: url("./FOX.svg") no-repeat center;
+}
+
+.info-status.FS1 {
+  background: url("./FS1.svg") no-repeat center;
+}
+
+.info-status.FS1-INT {
+  background: url("./FS1-INT.svg") no-repeat center;
+}
+
+.info-status.MLBN {
+  background: url("./MLBN.svg") no-repeat center;
+  background-size: 1.5em;
+
+}
+
+.info-status.TBS {
+  background: url("./TBS.svg") no-repeat center;
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* background-color: #ECECEC; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* breakpoints */
+
+
+@media only screen and (min-width: 330px) {
+  .scores {
+    flex-direction: row;
+  }
+  .decisions {
+    align-self: flex-start;
+  }
+
+  .section-details {
+    min-height: unset;
+  }
+
+  .App-logo {
+    max-width: 668px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+/* tablet */
+
+
+@media only screen and (min-width: 600px) {
+  .section-description {
+    flex-direction: row;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+
+/* desktop and tablet lanscape */
+
+@media only screen and (min-width: 768px) {
+  .details-game {
+    align-items: unset;
   }
+  .section-details {
+    flex-direction: row;
+    height: 4.5em;
+  }
+  .schedule-list li {
+    text-align: unset;
+  }
+
+  .decisions {
+    min-width: 7em;
+    align-self: unset;
+  }
+  
 }
