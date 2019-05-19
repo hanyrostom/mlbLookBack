@@ -1,6 +1,7 @@
 import React from "react";
-import mlbPostseason from "./assets/mlbPostseason.svg";
+import "./assets/reset.css";
 import "./assets/App.css";
+import mlbPostseason from "./assets/mlbPostseason.svg";
 import Schedule from "./schedule";
 import Loader from './loader'
 

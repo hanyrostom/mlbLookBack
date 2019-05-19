@@ -2,9 +2,11 @@ import React from "react";
 import { days } from "./helpers";
 import Game from './game'
 
+const FILTER_BY_DATE = 'FILTER_BY_DATE';
+    
 
 const Day = ({ games, id }) => {
-
+  
   const dayOfWeek = new Date(games[id][0].gameDate).getDay();
   const weekdayString = new Date(games[id][0].gameDate)
     .toDateString()
@@ -20,7 +22,7 @@ const Day = ({ games, id }) => {
                 {days[dayOfWeek]}, {weekdayString}
               </h2>
             ) : null}
-           <Game game={game} />
+           <Game game={game} filter={FILTER_BY_DATE}/>
           </li>
         ))}
       </ul>

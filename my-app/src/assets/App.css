@@ -21,6 +21,9 @@ h1 {
 
 h2 {
   font-size: 0.75em;
+}
+
+h2, h3, h5 {
   font-weight: 600;
 }
 
@@ -128,9 +131,25 @@ header {
   line-height: 1em;
 }
 
+
 .section-description {
   display: flex;
   flex-direction: column;
+}
+
+.FILTER_BY_ROUND.description {
+  display: none;
+}
+
+.FILTER_BY_DATE.game-time {
+  display: none;
+}
+
+.game-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1.5em;
 }
 
 .section-details {
@@ -140,8 +159,13 @@ header {
   align-items: center;
   border-top: 1px solid rgb(236,236,236);
   border-bottom: 1px solid rgb(236,236,236);
-  min-height: 24.5em;
+  min-height: 20em;
   padding: 2em;
+}
+
+.section-details.FILTER_BY_ROUND {
+  flex-direction: column;
+  min-height: 20em;
 }
 
 .section-details h5{
@@ -156,6 +180,32 @@ header {
   align-items: center;
 }
 
+.details-game.FILTER_BY_ROUND {
+  align-self: center;
+}
+
+.game-main.FILTER_BY_ROUND {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-main.FILTER_BY_DATE {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 13em;
+}
+
+.coverage-decisions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coverage-decisions.FILTER_BY_ROUND {
+  padding-top: 1.5em;
+}
 .scores {
   display: flex;
   flex-direction: column;
@@ -166,16 +216,36 @@ header {
   font-weight: 600;
 }
 
-.scores-awayteam, .scores-hometeam{
+
+.scores-team{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.scores-team.FILTER_BY_ROUND {
+  flex-direction: column;
+}
+
+.team-score {
+  color: rgba(212, 89, 89, 1);
+}
+
+p.team-score.FILTER_BY_ROUND {
+  font-size: 3em;
+  color: rgba(212, 89, 89, 1);
 }
 
 span.team-logo {
   display: block;
   height: 1.5em;
   width: 1.5em;
+}
+
+.team-logo.FILTER_BY_ROUND {
+  height: 4.5em;
+  width: 4.5em;
+  margin: 0.5em;
 }
 
 /*team logos */
@@ -245,6 +315,7 @@ span.team-logo.Cubs {
   justify-content: space-around;
   align-items: center;
   width: 6em;
+  margin: 0 auto;
 }
 
 p.team-name {
@@ -256,6 +327,7 @@ p.team-name {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0 auto;
 }
 
 
@@ -364,9 +436,28 @@ div.info-status {
     align-self: flex-start;
   }
 
+  .game-time {
+    flex-direction: row;
+  }
+
+  .game {
+    padding-right: 2em;
+  }
+
+  .time {
+    padding-left: 2em;
+  }
+
   .section-details {
     min-height: unset;
     padding: 2em 0em;
+  }
+
+  .game-main.FILTER_BY_DATE {
+    padding-bottom: 1.5em;
+  }
+  .coverage-decisions.FILTER_BY_DATE {
+    flex-direction: row;
   }
 
   .App-logo {
@@ -384,6 +475,16 @@ div.info-status {
     flex-direction: row;
   }
 
+  .game-main.FILTER_BY_DATE {
+    flex-direction: row;
+    min-width: 100%;
+    height:unset
+  }
+
+  .coverage-decisions.FILTER_BY_ROUND {
+    flex-direction: row;
+  }
+
   .scores {
     padding: unset;
   }
@@ -393,12 +494,24 @@ div.info-status {
 /* desktop and tablet lanscape */
 
 @media only screen and (min-width: 768px) {
-  .details-game.day{
+  .details-game.FILTER_BY_DATE{
     align-items:flex-start;
   }
+  .game-main.FILTER_BY_DATE {
+    min-width: calc(100% - 5em);
+   }
+ 
+   .coverage-decisions.FILTER_BY_DATE {
+     justify-content: space-between;
+     min-width: 18em;
+   }
   .section-details {
     flex-direction: row;
     height: 6.5em;
+  }
+
+  .section-details.FILTER_BY_ROUND {
+    flex-direction: column;
   }
   .schedule-list li {
     text-align: unset;
