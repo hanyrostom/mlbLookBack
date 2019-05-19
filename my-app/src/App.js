@@ -1,5 +1,5 @@
 import React from "react";
-import mlbLogo from "./assets/mlbLogo.png";
+import mlbPostseason from "./assets/mlbPostseason.svg";
 import "./assets/App.css";
 import Schedule from "./schedule";
 import Loader from './loader'
@@ -30,7 +30,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={mlbLogo} className="App-logo" alt="logo" />
+          <img src={mlbPostseason} className="App-logo" alt="logo" />
         </header>
 
 
