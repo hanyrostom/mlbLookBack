@@ -1,10 +1,8 @@
-import React from "react";
-import Game  from "./game";
-
-const FILTER_BY_ROUND = "FILTER_BY_ROUND";
+import React               from "react";
+import Game                from "./game";
+import { FILTER_BY_ROUND } from './constants';
 
 const Round = ({ games, id }) => {
-  console.log("game: ", games);
 
   return (
     <li className="listItem-section" key={id}>

@@ -6,11 +6,9 @@
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
   max-width: 285px;
   width: 100%;
   padding: 2em;
-  /* pointer-events: none; */
 }
 
 h1 {
@@ -252,62 +250,50 @@ span.team-logo {
 
 span.team-logo.Dodgers {
   background: url("./dodgers.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Yankees {
   background: url("./yankees.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Dodgers {
   background: url("./dodgers.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Cubss {
   background: url("./cubs.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Astros {
   background: url("./astros.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Brewers {
   background: url("./brewers.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Indians {
   background: url("./indians.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Braves {
   background: url("./braves.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Rockies {
   background: url("./rockies.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Athletics {
   background: url("./athletics.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Red.Sox {
   background: url("./red-sox.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 span.team-logo.Cubs {
   background: url("./cubs.svg") no-repeat center;
-  /* background-size: 1.5em; */
 }
 
 .game-info {
@@ -389,7 +375,6 @@ div.info-status {
 }
 
 .App-header {
-  /* background-color: #ECECEC; */
   display: flex;
   flex-direction: column;
   align-items: center;

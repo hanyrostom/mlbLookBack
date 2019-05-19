@@ -2,7 +2,6 @@ import React from "react";
 
 
 const ErrorPage = (props) => {
-
     return (
       <div className="section-details">
         <h1>Yikes!</h1>

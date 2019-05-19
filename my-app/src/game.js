@@ -1,5 +1,5 @@
-import React from "react";
-import wrap from "./assets/wrap.png";
+import React      from "react";
+import wrap       from "./assets/wrap.png";
 import highlights from "./assets/highlights.png";
 
 const Game = ({ game, filter }) => (

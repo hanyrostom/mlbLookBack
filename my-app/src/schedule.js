@@ -1,10 +1,8 @@
-import React             from "react"
-import { listGames }     from './helpers'
-import Day               from './day'
-import Round             from './round'
-
-const FILTER_BY_DATE = 'FILTER_BY_DATE',
-     FILTER_BY_ROUND = 'FILTER_BY_ROUND';
+import React                               from "react"
+import Day                                 from './day'
+import Round                               from './round'
+import { listGames }                       from './helpers'
+import { FILTER_BY_DATE, FILTER_BY_ROUND } from './constants';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -26,16 +24,12 @@ class Schedule extends React.Component {
 	}
 	
 	onFilterClick = (filterBy) => {
-    
     if ( filterBy === FILTER_BY_DATE ) {
       this.setState({ filter : filterBy, FILTER_BY_DATE : 'active', FILTER_BY_ROUND : '' })
     } else {
       this.setState({ filter : filterBy, FILTER_BY_ROUND : 'active', FILTER_BY_DATE : '' })
     }
- 
 	}
-
-
 
   render() {
 		let { filter, gamesByDate, gamesByRound } = this.state;
