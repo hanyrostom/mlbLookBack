@@ -13,13 +13,15 @@
   /* pointer-events: none; */
 }
 
-
 h1 {
-  font-size: 1.5em;
+  font-size: 1em;
+  font-weight: 800;
 }
 
+
 h2 {
-  font-size: 1.25em;
+  font-size: 0.75em;
+  font-weight: 600;
 }
 
 p {
@@ -42,22 +44,44 @@ header {
 
 .filters {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
+
 }
 
 .filter {
-
+  
   padding: 1em;
   text-align: center;
   margin: auto 0;
   width: 5em;
   border: 1px solid lightgrey;
+  cursor: default;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: background-color 2s; /* Safari */
+  transition: background-color 0.5s;
+}
+
+.filter:hover {
+  background-color : rgba(1,135, 201, 0.3);
+}
+
+.filter:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.filter:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .filter.active {
-  background-color : lightgrey;
-  border: 2px solid grey;
+  background-color : rgba(1,135, 201, 1);
+  color: white;
+
 }
 
 .schedule-list {
@@ -89,13 +113,19 @@ header {
   line-height: 1.5em;
 }
 
+
+.round h2 {
+  line-height: 1.5em;
+  text-align: center;
+}
+
 .listGame-section > li:first-child {
   background-color: aqua;
 }
 
-.section-date, .section-description {
+.section-date, .section-description, .section-series {
   padding: 0.5em 0em;
-  /* line-height: 1em; */
+  line-height: 1em;
 }
 
 .section-description {
@@ -111,7 +141,12 @@ header {
   border-top: 1px solid rgb(236,236,236);
   border-bottom: 1px solid rgb(236,236,236);
   min-height: 24.5em;
-  padding-bottom: 0.5em;
+  padding: 2em;
+}
+
+.section-details h5{
+  font-size: 0.9em;
+  color: #147cd1;
 }
 
 .details-game {
@@ -295,8 +330,35 @@ div.info-status {
 
 
 @media only screen and (min-width: 330px) {
+  .filters {
+    flex-direction: row;
+  }
+
+  .filter:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: unset;
+}
+
+  .filter:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: unset;
+ }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.35em;
+  }
   .scores {
     flex-direction: row;
+  }
+
+  .scores .round {
+    padding: 2em;
   }
   .decisions {
     align-self: flex-start;
@@ -304,6 +366,7 @@ div.info-status {
 
   .section-details {
     min-height: unset;
+    padding: 2em 0em;
   }
 
   .App-logo {
@@ -320,18 +383,22 @@ div.info-status {
   .section-description {
     flex-direction: row;
   }
+
+  .scores {
+    padding: unset;
+  }
 }
 
 
 /* desktop and tablet lanscape */
 
 @media only screen and (min-width: 768px) {
-  .details-game {
-    align-items: unset;
+  .details-game.day{
+    align-items:flex-start;
   }
   .section-details {
     flex-direction: row;
-    height: 4.5em;
+    height: 6.5em;
   }
   .schedule-list li {
     text-align: unset;
@@ -341,5 +408,7 @@ div.info-status {
     min-width: 7em;
     align-self: unset;
   }
+
+  
   
 }

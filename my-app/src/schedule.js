@@ -1,10 +1,10 @@
 import React from "react";
-// import mlbLogo from "./assets/mlbLogo.svg";
-import wrap from './assets/wrap.png';
-import highlights from './assets/highlights.png';
-import helpers from './helpers';
-import Game from './game'
+import { listGames } from './helpers';
+import Day from './day'
+import Round from './round'
 
+const FILTER_BY_DATE = 'FILTER_BY_DATE';
+const FILTER_BY_ROUND = 'FILTER_BY_ROUND';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -12,34 +12,33 @@ class Schedule extends React.Component {
     this.state = {
 			gamesByDate: [],
 			gamesByRound:[],
-			filter: {
-				ByDate: 'active',
-				ByRound: ''
-			},
-			selected: 'gamesByDate'
+      filter: FILTER_BY_DATE,
+      FILTER_BY_DATE : 'active',
+      FILTER_BY_ROUND : '',
     };
   }
 
-  componentDidMount() {
-		this.setState({gamesByDate : helpers.listGames(this.props.games, 'ByDate'),
-									gamesByRound : helpers.listGames(this.props.games, 'ByRound')})
-		this.setState({})
+  componentDidMount() { //**** read below/
+    const gamesByDate = listGames(this.props.games, "ByDate"); 
+    const gamesByRound = listGames(this.props.games, "ByRound");
+
+		this.setState({ gamesByDate, gamesByRound });
 	}
 	
-	onFilterClick = (event) => {
-		//change css
-		let by             = event.target.innerText.split(' ').join(''),
-		    filterSelected = {[by] : 'active'};
-		this.setState({filter : filterSelected, selected: `games${by}`}, ()=> console.log(this.state))
-		//render required filtered games
+	onFilterClick = (filterBy) => {
+    
+    if ( filterBy === FILTER_BY_DATE ) {
+      this.setState({ filter : filterBy, FILTER_BY_DATE : 'active', FILTER_BY_ROUND : '' })
+    } else {
+      this.setState({ filter : filterBy, FILTER_BY_ROUND : 'active', FILTER_BY_DATE : '' })
+    }
+ 
 	}
 
 
 
   render() {
-		let { gamesByDate, filter, selected, gamesByRound } = this.state;
-		
-			console.log('selected:', gamesByRound)
+		let { filter, gamesByDate, gamesByRound } = this.state;
 
 
     return (
@@ -48,29 +47,42 @@ class Schedule extends React.Component {
           <h1 className='title'>Schedule</h1>
         </header>
 				<div className='filters'>
-					<h3 className={`filter ${filter.ByDate}`} onClick={this.onFilterClick}>By Date</h3>
-					<h3 className={`filter ${filter.ByRound}`} onClick={this.onFilterClick}>By Round</h3>
+          <h3 className={`filter ${this.state.FILTER_BY_DATE}`} onClick={() => this.onFilterClick(FILTER_BY_DATE)}>By Date</h3>
+					<h3 className={`filter ${this.state.FILTER_BY_ROUND}`} onClick={() => this.onFilterClick(FILTER_BY_ROUND)}>By Round</h3>
 				</div>
         <hr />
-        <ul className="schedule-list">
-				{console.log(this.state[selected])}
-          {this.state[selected].map((game, j) => (
-						<li className="listItem-section" key={j}>
-						
-              <ul className="listed-games">
-                {game[0][j].map((game, i) => (
-                  
-                    <Game game={game} key={i} i={i} filter= {selected}/>
-										
-                  
-                ))}
-              </ul>
-            </li>
+          {filter === FILTER_BY_DATE ? <ul className="schedule-list">
+          {gamesByDate.map(([gamesForFiltered], j) => (
+            <Day games={gamesForFiltered} key={j} id={j} filter={filter} />
           ))}
-        </ul>
+        </ul> :<ul className="schedule-list">
+          {gamesByRound.map(([gamesForFiltered], i) => (
+            <Round games={gamesForFiltered} key={i} id={i} filter={filter} />
+          ))}
+        </ul>}
+        
       </div>
     );
   }
 }
 
 export default Schedule;
+
+
+
+/***
+ * 
+// Trade off: we could save space by sorting everytime a user switches filters
+// but it'll be costly in time so we choose to sort only once on mount since we can control 
+// how much data we have per postsean 
+//Otherwise:
+
+  //in onFilterClick  we would add this logic for the other approach
+
+    // if the filter is changed to byRound
+    // this.setState({ games: filterByRound(games) })
+
+    // if the filter is changed to byDate
+    // this.setState({ games: filterByDate(games) })
+
+ */

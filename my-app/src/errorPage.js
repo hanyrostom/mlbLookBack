@@ -2,7 +2,6 @@ import React from "react";
 
 
 const ErrorPage = (props) => {
-  console.log('game: ', props)
 
     return (
       <div className="section-details">
