@@ -11,6 +11,7 @@ export const seriesOrder = {
   'WS'       : 9
 };
 
+
 export const sortRounds = allRounds => {
   let newOrder = [];
 
