@@ -11,8 +11,7 @@
 
 ## Requirements
 
-- Node (8.11.3+)
-- Web-browser (Chrome preferred; limited testing on alternative browsers)
+- Web-browser (Chrome/Safari preferred; limited testing on alternative browsers)
 
 ## Installing Dependencies
 
@@ -26,6 +25,7 @@ From within my-app directory:
 npm install
 npm start
 ```
+App will run on localhost:3000
 
 ## Built With
 
