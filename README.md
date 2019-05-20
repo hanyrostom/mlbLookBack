@@ -20,7 +20,7 @@ Clone repo
 ```
 git clone https://github.com/hanyrostom/mlbLookBack.git
 ```
-From within the my-app directory:
+From within my-app directory:
 
 ```
 npm install
