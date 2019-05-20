@@ -67,8 +67,9 @@ export default Schedule;
 /***
  * 
 // Trade off: we could save space by sorting everytime a user switches filters
-// but it'll be costly in time so we choose to sort only once on mount since we can control 
-// how much data we have per postsean 
+// but it'll be costly in time so we choose to sort only once on mount since we in control/aware 
+// how much data we have in the postseason 
+
 //Otherwise:
 
   //in onFilterClick  we would add this logic for the other approach
