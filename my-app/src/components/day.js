@@ -1,7 +1,7 @@
 import React              from "react";
 import Game               from './game'
 import { days }           from "./helpers";
-import { FILTER_BY_DATE } from './constants'
+import { FILTER_BY_DATE } from '../constants'
     
 
 const Day = ({ games, id }) => {

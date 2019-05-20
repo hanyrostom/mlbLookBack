@@ -1,6 +1,6 @@
 import React               from "react";
 import Game                from "./game";
-import { FILTER_BY_ROUND } from './constants';
+import { FILTER_BY_ROUND } from '../constants';
 
 const Round = ({ games, id }) => {
 

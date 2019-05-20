@@ -1,10 +1,10 @@
 import React                                     from "react";
-import "./assets/reset.css";
-import "./assets/App.css";
-import mlbPostseason                             from "./assets/mlbPostseason.svg";
+import "../assets/reset.css";
+import "../assets/App.css";
+import mlbPostseason                             from "../assets/mlbPostseason.svg";
 import Schedule                                  from "./schedule";
 import Loader                                    from './loader'
-import { HAS_DATA, MISSING_DATA, FETCHING_DATA } from './constants'
+import { HAS_DATA, MISSING_DATA, FETCHING_DATA } from '../constants'
 
 class App extends React.Component {
   constructor(props) {

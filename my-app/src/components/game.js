@@ -1,6 +1,6 @@
 import React      from "react";
-import wrap       from "./assets/wrap.png";
-import highlights from "./assets/highlights.png";
+import wrap       from "../assets/wrap.png";
+import highlights from "../assets/highlights.png";
 
 const Game = ({ game, filter }) => (
     <div className={`section-details ${filter}`}>

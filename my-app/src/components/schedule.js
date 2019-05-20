@@ -2,7 +2,7 @@ import React                               from "react"
 import Day                                 from './day'
 import Round                               from './round'
 import { listGames }                       from './helpers'
-import { FILTER_BY_DATE, FILTER_BY_ROUND } from './constants';
+import { FILTER_BY_DATE, FILTER_BY_ROUND } from '../constants';
 
 class Schedule extends React.Component {
   constructor(props) {
